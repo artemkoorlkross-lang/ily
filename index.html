@@ -1,75 +1,82 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>❤️ Я вас всех люблю ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️ Я вас всех люблю ❤️</title>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        body{
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            flex-direction:column;
-            background:linear-gradient(135deg,#ff4d88,#8a2be2);
-            font-family:Arial,sans-serif;
-            color:white;
-            text-align:center;
-        }
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:linear-gradient(135deg,#ff4d88,#8a2be2);
+    font-family:Arial,sans-serif;
+    color:white;
+    text-align:center;
+    overflow:hidden;
+}
 
-        h1{
-            font-size:60px;
-            margin-bottom:30px;
-            text-shadow:0 0 15px rgba(255,255,255,0.7);
-            animation: glow 2s infinite alternate;
-        }
+h1{
+    font-size:60px;
+    margin-bottom:30px;
+    text-shadow:0 0 15px rgba(255,255,255,0.7);
+    animation:glow 2s infinite alternate;
+    z-index:10;
+}
 
-        @keyframes glow{
-            from{
-                text-shadow:0 0 10px #fff;
-            }
-            to{
-                text-shadow:0 0 30px #fff,0 0 50px #ff99cc;
-            }
-        }
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #fff;
+    }
+    to{
+        text-shadow:0 0 30px #fff,0 0 50px #ff99cc;
+    }
+}
 
-        .player{
-            background:rgba(255,255,255,0.15);
-            padding:20px;
-            border-radius:20px;
-            backdrop-filter:blur(10px);
-        }
+.player{
+    background:rgba(255,255,255,0.15);
+    padding:20px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    z-index:10;
+}
 
-        audio{
-            width:320px;
-        }
+audio{
+    width:320px;
+}
 
-        p{
-            margin-top:15px;
-            opacity:0.9;
-        }
-    </style>
+p{
+    margin-top:15px;
+    opacity:0.9;
+}
+
+/* Сердечки */
+
 .heart{
     position:fixed;
-    bottom:-50px;
+    bottom:-100px;
     pointer-events:none;
     animation:floatUp linear infinite;
     z-index:1;
 }
+
+/* Летающие фото */
 
 .floating-photo{
     position:fixed;
     bottom:-200px;
     width:120px;
     border-radius:15px;
-    box-shadow:0 0 20px rgba(255,255,255,0.5);
+    box-shadow:0 0 25px rgba(255,255,255,0.6);
     animation:floatUp linear infinite;
     pointer-events:none;
     z-index:0;
@@ -94,42 +101,53 @@
         opacity:0;
     }
 }
+</style>
 </head>
 <body>
 
-    <h1>Я вас всех люблю ❤️</h1>
+<h1>Я вас всех люблю ❤️</h1>
 
-    <div class="player">
-        <audio controls>
-            <source src="song.mp3" type="audio/mpeg">
-            Ваш браузер не поддерживает аудио.
-        </audio>
+<div class="player">
+    <audio controls>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
 
-        <p>🎵 Наша песня 🎵</p>
-    </div>
+    <p>🎵 Наша песня 🎵</p>
+</div>
+
 <script>
-for(let i = 0; i < 25; i++) {
-    const heart = document.createElement("div");
-    heart.innerHTML = "❤️";
-    heart.className = "heart";
+// Сердечки
+for(let i=0;i<35;i++){
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (5 + Math.random() * 8) + "s";
-    heart.style.fontSize = (20 + Math.random() * 40) + "px";
+    const heart=document.createElement("div");
+
+    heart.innerHTML="❤️";
+    heart.className="heart";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(20+Math.random()*40)+"px";
+    heart.style.animationDuration=(6+Math.random()*10)+"s";
+    heart.style.animationDelay=Math.random()*10+"s";
 
     document.body.appendChild(heart);
 }
 
-for(let i = 0; i < 12; i++) {
-    const img = document.createElement("img");
-    img.src = "photo.png"; /* твоя картинка */
+// Фото
+for(let i=0;i<15;i++){
 
-    img.className = "floating-photo";
-    img.style.left = Math.random() * 100 + "vw";
-    img.style.animationDuration = (12 + Math.random() * 10) + "s";
+    const img=document.createElement("img");
+
+    img.src="photo.png";
+
+    img.className="floating-photo";
+
+    img.style.left=Math.random()*100+"vw";
+    img.style.animationDuration=(12+Math.random()*12)+"s";
+    img.style.animationDelay=Math.random()*10+"s";
 
     document.body.appendChild(img);
 }
 </script>
+
 </body>
 </html>
