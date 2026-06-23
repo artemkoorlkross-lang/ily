@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️ Я вас всех люблю ❤️</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            flex-direction:column;
+            background:linear-gradient(135deg,#ff4d88,#8a2be2);
+            font-family:Arial,sans-serif;
+            color:white;
+            text-align:center;
+        }
+
+        h1{
+            font-size:60px;
+            margin-bottom:30px;
+            text-shadow:0 0 15px rgba(255,255,255,0.7);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow{
+            from{
+                text-shadow:0 0 10px #fff;
+            }
+            to{
+                text-shadow:0 0 30px #fff,0 0 50px #ff99cc;
+            }
+        }
+
+        .player{
+            background:rgba(255,255,255,0.15);
+            padding:20px;
+            border-radius:20px;
+            backdrop-filter:blur(10px);
+        }
+
+        audio{
+            width:320px;
+        }
+
+        p{
+            margin-top:15px;
+            opacity:0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Я вас всех люблю ❤️</h1>
+
+    <div class="player">
+        <audio controls>
+            <source src="song.mp3" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио.
+        </audio>
+
+        <p>🎵 Наша песня 🎵</p>
+    </div>
+
+</body>
+</html>
