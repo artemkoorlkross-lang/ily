@@ -56,6 +56,44 @@
             opacity:0.9;
         }
     </style>
+.heart{
+    position:fixed;
+    bottom:-50px;
+    pointer-events:none;
+    animation:floatUp linear infinite;
+    z-index:1;
+}
+
+.floating-photo{
+    position:fixed;
+    bottom:-200px;
+    width:120px;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(255,255,255,0.5);
+    animation:floatUp linear infinite;
+    pointer-events:none;
+    z-index:0;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    90%{
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+}
 </head>
 <body>
 
@@ -69,6 +107,29 @@
 
         <p>🎵 Наша песня 🎵</p>
     </div>
+<script>
+for(let i = 0; i < 25; i++) {
+    const heart = document.createElement("div");
+    heart.innerHTML = "❤️";
+    heart.className = "heart";
 
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (5 + Math.random() * 8) + "s";
+    heart.style.fontSize = (20 + Math.random() * 40) + "px";
+
+    document.body.appendChild(heart);
+}
+
+for(let i = 0; i < 12; i++) {
+    const img = document.createElement("img");
+    img.src = "photo.png"; /* твоя картинка */
+
+    img.className = "floating-photo";
+    img.style.left = Math.random() * 100 + "vw";
+    img.style.animationDuration = (12 + Math.random() * 10) + "s";
+
+    document.body.appendChild(img);
+}
+</script>
 </body>
 </html>
